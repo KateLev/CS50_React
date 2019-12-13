@@ -31,24 +31,28 @@ function newTodo() {
       let y = document.createElement("Button");
       y.className = 'Button'
 	  y.innerHTML =  "Confirm"
+	  y.setAttribute("id", "myButton")
 	  
 	  //position for our new elements. I add them to list element	  
 	  
 	  if (itemCountSpanNumber===0&&uncheckedCountSpanNumber===0) //to prevent creating new form
 	  {
-		  list.appendChild(x);
-		  list.appendChild(y);
+		  list.appendChild(x)
+		  list.appendChild(y)
 	  }
       y.onclick = function() {
-		  let node = document.createElement("LI")
-		  //  let textNode = document.createTextNode("Water");
-		  let textNode = document.getElementById("myInput").value
+		  let node = document.createElement("LI");
+		  //  let textNode = document.createTextNode("Water")
+		  let textNode = document.getElementById("myInput").value;
 		//  alert(document.getElementById("myInput").value)
-		  node.innerHTML = textNode
+		  node.innerHTML = textNode;
 		  document.getElementById("todo-list").appendChild(node);
-	  };
-	  itemCountSpanNumber = itemCountSpanNumber + 1
-	  itemCountSpan.innerHTML = itemCountSpanNumber 
+	//	  document.getElementById('myInput').hidden = true;
+	//	  document.getElementById('myButton').hidden = true;
+		  itemCountSpanNumber = itemCountSpanNumber + 1;
+		  itemCountSpan.innerHTML = itemCountSpanNumber; 
+	  }
+	  
 }
   catch {
 	  uncheckedCountSpanNumber = uncheckedCountSpanNumber + 1 
@@ -56,13 +60,4 @@ function newTodo() {
 	  alert('Errorm I did something wrong... ')
   }
 }
-/*function AddNewTodo()
-{
-	let node = document.createElement("LI")
-	//  let textNode = document.createTextNode("Water");
-	let textNode = document.getElementById('myInput').value
-	alert(textNode)
-	node.appendChild(textNode)// add value as li element
-	document.getElementById("todo-list").appendChild(node);
-	
-}/*/
+
