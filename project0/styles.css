@@ -67,8 +67,11 @@ ul {
 .todo-container:first-of-type {
   border-top: 1px solid #333;
 }
-#todo-text {
-	padding:-800px;
+.todo-text {
+	width:400px;
+	margin-bottom:20px;
+	margin-right:5px;
+	background-color:#e6f2ff;
 }
 
 
