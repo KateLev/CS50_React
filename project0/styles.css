@@ -39,8 +39,15 @@ ul {
   flex: none;
 }
 
-.button {
+.button, .button_delete {
   padding: 10px 20px;
+  width:150px;
+  margin-top: 10px;
+  
+  
+}
+.button_delete {
+	display:inline-block;
 }
 
 .todo-list {
@@ -61,6 +68,7 @@ ul {
 .todo-container {
   padding: 20px;
   border-bottom: 1px solid #333;
+  margin-top:10px;
   
 }
 
@@ -68,10 +76,11 @@ ul {
   border-top: 1px solid #333;
 }
 .todo-text {
-	width:400px;
-	margin-bottom:20px;
+	width:300px;
+	margin-bottom:5px;
 	margin-right:5px;
 	background-color:#e6f2ff;
+	padding: 5px;
 }
 
 

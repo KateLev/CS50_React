@@ -5,59 +5,41 @@ const classNames = {
   TODO_DELETE: 'todo-delete',
 }
 
-const list = document.getElementById('todo-list')
-const itemCountSpan = document.getElementById('item-count')
-const uncheckedCountSpan = document.getElementById('unchecked-count')
-
-itemCountSpan.innerHTML = 0 //to pass the value when newTODO function in unawalable 
-let itemCountSpanNumber = 0 //because I need a number, and if I use just innerHTML it gives me a string
-let uncheckedCountSpanNumber = 0 
-
+let list = document.getElementById('todo-list')
+list.className = classNames.TODO_ITEM // style for todo-list
 
 function newTodo() {
+	
+	
   try 
   {
-      // create new form
-	  
-	  let x = document.createElement("INPUT");
-	  x.className = classNames.TODO_TEXT  // if we don't have the classes, there must be x.className = 'todo-container'
-	
-      x.setAttribute("type", "text");
-      x.setAttribute("placeholder", "What to do, misstress Weatherwax?");
-	  x.setAttribute("id", "myInput");
-	 // x.setAttribute("value", "Hi");
-	  
-	  // create new button
-      let y = document.createElement("Button");
-      y.className = 'Button'
-	  y.innerHTML =  "Confirm"
-	  y.setAttribute("id", "myButton")
-	  
-	  //position for our new elements. I add them to list element	  
-	  
-	  if (itemCountSpanNumber===0&&uncheckedCountSpanNumber===0) //to prevent creating new form
-	  {
-		  list.appendChild(x)
-		  list.appendChild(y)
-	  }
-      y.onclick = function() {
+	  result = prompt("Input new TODO")
+	  if(result)
+	  { 
+		  result = result.charAt(0).toUpperCase() + result.slice(1);
+		  
+		  //create new li element and append it to our todo list
+		  
 		  let node = document.createElement("LI");
-		  //  let textNode = document.createTextNode("Water")
-		  let textNode = document.getElementById("myInput").value;
-		//  alert(document.getElementById("myInput").value)
-		  node.innerHTML = textNode;
+		  node.textContent = result;
+		  node.className = classNames.TODO_TEXT;
 		  document.getElementById("todo-list").appendChild(node);
-	//	  document.getElementById('myInput').hidden = true;
-	//	  document.getElementById('myButton').hidden = true;
-		  itemCountSpanNumber = itemCountSpanNumber + 1;
-		  itemCountSpan.innerHTML = itemCountSpanNumber; 
+		  
+		  let itemCountSpan = document.getElementById("item-count").textContent; //take element from item-count
+		  itemCountSpan = Number(itemCountSpan); //explicit coercion
+		  itemCountSpan = itemCountSpan + 1; //increase counter
+		  document.getElementById("item-count").textContent = itemCountSpan; //put new counter value
 	  }
 	  
-}
-  catch {
-	  uncheckedCountSpanNumber = uncheckedCountSpanNumber + 1 
-	  uncheckedCountSpan.innerHTML = uncheckedCountSpanNumber
-	  alert('Errorm I did something wrong... ')
   }
+  catch {
+  // increase failer counter by 1
+	  let uncheckedCount = document.getElementById("unchecked-count").textContent;
+	  uncheckedCount = Number(uncheckedCount)
+	  uncheckedCount = uncheckedCount + 1
+	  document.getElementById("unchecked-count").textContent = uncheckedCount
+	  alert('Error. I did something wrong... ')
+  }
+
 }
 
